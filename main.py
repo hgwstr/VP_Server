@@ -17,3 +17,4 @@ async def receive_location(data: LocationData):
     
     # Возвращаем успешный ответ клиенту
     return {"status": "success", "latitude": data.latitude, "longitude": data.longitude}
+
