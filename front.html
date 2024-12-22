@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Location Data</title>
+</head>
+<body>
+    <h1>Location Data</h1>
+    <ul id="data-list"></ul>
+
+    <script>
+        const socket = new WebSocket("ws://localhost:8000/ws");
+
+        socket.onmessage = function(event) {
+            const dataList = document.getElementById("data-list");
+            
+            // Очищаем список перед добавлением новой строки
+            dataList.innerHTML = ""; 
+
+            // Создаем новую строку с данными
+            const newItem = document.createElement("li");
+            newItem.textContent = event.data;
+
+            // Добавляем строку в список
+            dataList.appendChild(newItem);
+        };
+    </script>
+</body>
+</html>
